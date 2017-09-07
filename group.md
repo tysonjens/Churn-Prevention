@@ -37,7 +37,7 @@ Here is a detailed description of the data:
 1. Perform any cleaning, exploratory analysis, and/or visualizations to use the
 provided data for this analysis.
    
-2. Build a predictive model to help determine the probablity that a rider will
+2. Build a predictive model to help determine the probability that a rider will
 be retained.
 
 3. Evaluate the model.  Focus on metrics that are important for your *stistical
@@ -47,7 +47,7 @@ model*.
 your predictions.
 
 5. Discuss the validity of your model. Issues such as
-leakage.  For more on leakege, see [this essay on
+leakage.  For more on leakage, see [this essay on
 Kaggle](https://www.kaggle.com/wiki/Leakage), and this paper: [Leakage in Data
 Mining: Formulation, Detection, and Avoidance](https://www.cs.umb.edu/~ding/history/470_670_fall_2011/papers/cs670_Tran_PreferredPaper_LeakingInDataMining.pdf).
 
@@ -69,5 +69,5 @@ rules*.
   - What performance metric did you use to evaluate the *model*? Why?
   - Based on insights from the model, what actionable plans do you propose to
     reduce churn?
-  - What are the potential impacts of inplementing these plans or decisions?
+  - What are the potential impacts of implementing these plans or decisions?
     What performance metrics did you use to evaluate these *decisions*, why?
