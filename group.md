@@ -40,7 +40,7 @@ provided data for this analysis.
 2. Build a predictive model to help determine the probability that a rider will
 be retained.
 
-3. Evaluate the model.  Focus on metrics that are important for your *stistical
+3. Evaluate the model.  Focus on metrics that are important for your *statistical
 model*.
  
 4. Identify / interpret features that are the most influential in affecting
