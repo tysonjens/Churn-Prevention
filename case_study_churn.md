@@ -51,6 +51,9 @@ pick by last active day
 
 ### Feature Importances with Gradient Boost
 
+<img alt="partial depend" src="figs/feature importance gb rf.png" width='500'>
+
+
 <img alt="partial depend" src="figs/partial_d_6.png" width='500'>
 
 ### Feature Importance with Decision Tree
