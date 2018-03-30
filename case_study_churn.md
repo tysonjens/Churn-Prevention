@@ -41,9 +41,13 @@ pick by last active day
 
 ### feature importances
 features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
-       'luxury_car_user', 'weekday_pct']
+       'luxury_car_user', 'weekday_pct', 'city_Astapor', 'city_King's Landing',
+       'city_Winterfell', 'phone_Android', 'phone_iPhone', 'rate_driver',
+       'gets_rated'],
 
-logistic: [ 0.17304385  0.07934547 -0.11524761 -0.46862851 -0.40809665 -0.00793641]
+logistic: [[ 0.19290704  0.03959873 -0.07586733 -0.4040499  -0.42531994  0.01600943
+   0.30640122 -0.42624842  0.05506398  0.15665774 -0.347648   -0.25156251
+  -0.03891632]]
 
 |        model | methods | accuracy | precision |
 |---------- |---------- |----------- | ----------|

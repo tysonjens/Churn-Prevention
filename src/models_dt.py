@@ -6,6 +6,7 @@ from data import *
 from plotroc import plot_roc_curve
 from bagging import bagging
 from knn import knn
+from random_forest import random_forest
 # imports
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -67,6 +68,9 @@ if __name__ == '__main__':
     # bagging classifier
     bagc = bagging(X_train, X_test, y_train, y_test)
 
+    # random forest classifier
+    rfc = random_forest(X_train, X_test,y_train, y_test)
+
     # adaboost classifier
     ada = AdaBoostClassifier()
     ada.fit(X_train, y_train)
@@ -112,9 +116,9 @@ if __name__ == '__main__':
 
     # plot muliple models on roc curve
     logistic_mod = pipe_logistic.named_steps['logistic']
-    models = [logistic_mod, knn, dtc, bagc, ada, gbc]
-    model_names = ['logistic', 'knn', 'decision tree', 'bagging', 'AdaBoost', 'Gradient Boost']
-    colors = ['b','k','m','g','r','c']
+    models = [logistic_mod, knn, dtc, bagc, rfc, ada, gbc]
+    model_names = ['logistic', 'knn', 'decision tree', 'bagging', 'random forest', 'AdaBoost', 'Gradient Boost']
+    colors = ['b','k','m','g','r','c','y']
     plt.figure()
     for idx, model in enumerate(models):
         modname = model_names[idx]
@@ -126,7 +130,7 @@ if __name__ == '__main__':
     plt.show()
 
     # gradient boost partial dependency plots
-    features = [0, 1, 2, 3, (4, 5)]
+    features = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     names = X_train.columns
     fig, axs = plot_partial_dependence(gbc, X_train, features,
                                        feature_names=names,
