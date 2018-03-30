@@ -41,7 +41,7 @@ pick by last active day
 
 ### Feature Importances for Logistic Regression
 |features: |avg_dist|avg_surge|surge_pct|trips_in_first_30_days|gets_rated|
-|----|
+|--|--|--|--|--|--|
 |Beta|0.193|0.0396| -0.0759|-0.404|-0.039|
 |features:|luxury_car_user|weekday_pct|city_Astapor|city_King's Landing|
 |Beta|-0.425|  0.016|0.306|-0.426|
