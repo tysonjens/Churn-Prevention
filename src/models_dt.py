@@ -147,10 +147,14 @@ if __name__ == '__main__':
     #%%
     # plot feature importances
     impt_gbc = gbc.feature_importances_
+    imp_gbc = impt_gbc.reshape(-1,1)
     impt_rfc = rfc.feature_importances_
-    names = X_train.columns
+    imp_rfc = impt_rfc.reshape(-1,1)
+    names = np.array(X_train.columns)
+    names = names.reshape(-1,1)
+
     
-    imp_df = pd.DataFrame([names,impt_gbc,impt_rfc])
+    imp_df = pd.DataFrame([names,imp_gbc,imp_rfc])
     
     #%%
     fig, ax1 = plt.subplots(1,1,figsize=(18,3))
