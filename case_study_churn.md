@@ -39,18 +39,14 @@ pick by last active day
 | SVM | kernal=rbf, C=1, gamma=0.1 | 0.607 | 0.575 |
 | SVM | kernal=poly, defaults | 0.613 | 0.594 |
 
-### feature importances
-features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
-       'luxury_car_user', 'weekday_pct', 'city_Astapor', 'city_King's Landing',
-       'city_Winterfell', 'phone_Android', 'phone_iPhone', 'rate_driver',
-       'gets_rated'],
+### Feature Importances for Logistic Regression
+|features: |avg_dist|avg_surge|surge_pct|trips_in_first_30_days|gets_rated|
+|----|
+|Beta|0.193|0.0396| -0.0759|-0.404|-0.039|
+|features:|luxury_car_user|weekday_pct|city_Astapor|city_King's Landing|
+|Beta|-0.425|  0.016|0.306|-0.426|
+|features|city_Winterfell|phone_Android|phone_iPhone|rate_driver|
+|Beta|0.055|  0.157| -0.347|   -0.252|
 
-logistic: [[ 0.19290704  0.03959873 -0.07586733 -0.4040499  -0.42531994  0.01600943
-   0.30640122 -0.42624842  0.05506398  0.15665774 -0.347648   -0.25156251
-  -0.03891632]]
 
-|        model | methods | accuracy | precision |
-|---------- |---------- |----------- | ----------|
-| logistic regression |  cross-val, cv=3 |  0.671| 0.676 |
-| logistic regression |  cross-val, cv=5 |  0.670| 0.675 |
-| decision tree  | simple tree | 0.712 | 0.720 |
+<img alt="roc curve" src="/figs/roc_6models.png" width='500'>
