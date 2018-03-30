@@ -18,6 +18,8 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble.partial_dependence import plot_partial_dependence
+from sklearn.ensemble.partial_dependence import partial_dependence
 
 
 if __name__ == '__main__':
@@ -122,3 +124,12 @@ if __name__ == '__main__':
     plt.title('Receiver operating characteristic')
     plt.legend(loc="lower right")
     plt.show()
+
+    # gradient boost partial dependency plots
+    features = [0, 1, 2, 3, (4, 5)]
+    names = X_train.columns
+    fig, axs = plot_partial_dependence(gbc, X_train, features,
+                                       feature_names=names,
+                                       n_jobs=-1, grid_resolution=50)
+    fig.suptitle('Partial dependence plots')
+    plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
