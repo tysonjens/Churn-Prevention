@@ -8,17 +8,14 @@
  - __cost/benefit__: incentive costs $10, c.l.v. valued at $100
 
 
- |           |predicted0 | predicted1(churn) |
- |---------- |---------- |----------- |
- |__actual0__   |  keep $10, keep $100|  spend $10, keep $100|
- |__actual1(churn)__   |  keep $10, lose $100| spend $10, lose $100|
-
 cost-benefit matrix:
 
  |           |predicted0 | predicted1(churn) |
  |---------- |---------- |----------- |
  |__actual0__   |  0 |  -10|
  |__actual1(churn)__   |  0| 20 (-10 + 100*.2)|
+
+ Assumes 20% retention rate with incentive
 
 __precision__ is our target score metric:
  -  many people will churn, so we don't care about getting all of them, but of the people who will churn, we want to predict right so we don't waste incentive funds.
@@ -51,6 +48,14 @@ pick by last active day
 |Beta|-0.425|  0.016|0.306|-0.426|
 |features|city_Winterfell|phone_Android|phone_iPhone|rate_driver|
 |Beta|0.055|  0.157| -0.347|   -0.252|
+
+### Feature Importances with Gradient Boost
+
+<img alt="partial depend" src="figs/partial_d_6.png" width='500'>
+
+### Feature Importance with Decision Tree
+
+<img alt="partial depend" src="figs/tree.png" width='500'>
 
 
 <img alt="roc curve" src="figs/roc_6models.png" width='500'>
