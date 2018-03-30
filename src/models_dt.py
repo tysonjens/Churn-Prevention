@@ -6,6 +6,7 @@ from data import *
 from plotroc import plot_roc_curve
 from bagging import bagging
 from knn import knn
+from random_forest import random_forest
 # imports
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
@@ -21,7 +22,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble.partial_dependence import plot_partial_dependence
 from sklearn.ensemble.partial_dependence import partial_dependence
 
-
+#%%
 if __name__ == '__main__':
     df_train = pd.read_csv('../data/churn_train.csv')
     X_train, y_train = get_data(df_train)
@@ -67,6 +68,9 @@ if __name__ == '__main__':
     # bagging classifier
     bagc = bagging(X_train, X_test, y_train, y_test)
 
+    # random forest classifier
+    rfc = random_forest(X_train, X_test,y_train, y_test)
+
     # adaboost classifier
     ada = AdaBoostClassifier()
     ada.fit(X_train, y_train)
@@ -86,8 +90,9 @@ if __name__ == '__main__':
     print('accuracy = {}'.format(score_accuracy))
     print('precision = {}'.format(score_precision))
 
+#%%
     # gradient boost grid search
-    #%% grid search
+    # grid search
     # '''grid search to find best params for gradient boost classifier '''
     # gbc_grid = {'learning_rate': np.linspace(0.2,0.8,4),
     #                  'max_depth': [1,2,4,8],
@@ -109,12 +114,12 @@ if __name__ == '__main__':
     # # roc curve for adaboost
     # y_test_preds = ada.predict_proba(X_test)[:,1]
     # plot_roc_curve(y_test,y_test_preds)
-
+#%%
     # plot muliple models on roc curve
     logistic_mod = pipe_logistic.named_steps['logistic']
-    models = [logistic_mod, knn, dtc, bagc, ada, gbc]
-    model_names = ['logistic', 'knn', 'decision tree', 'bagging', 'AdaBoost', 'Gradient Boost']
-    colors = ['b','k','m','g','r','c']
+    models = [logistic_mod, knn, dtc, bagc, rfc, ada, gbc]
+    model_names = ['logistic', 'knn', 'decision tree', 'bagging', 'random forest', 'AdaBoost', 'Gradient Boost']
+    colors = ['b','k','m','g','r','c','y']
     plt.figure()
     for idx, model in enumerate(models):
         modname = model_names[idx]
@@ -124,12 +129,43 @@ if __name__ == '__main__':
     plt.title('Receiver operating characteristic')
     plt.legend(loc="lower right")
     plt.show()
-
+#%%
     # gradient boost partial dependency plots
-    features = [0, 1, 2, 3, (4, 5)]
+    features = [0,1,2,3,4,5]
     names = X_train.columns
     fig, axs = plot_partial_dependence(gbc, X_train, features,
                                        feature_names=names,
                                        n_jobs=-1, grid_resolution=50)
     fig.suptitle('Partial dependence plots')
     plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
+    
+    # save fig
+    figname = 'partial_d_compare_rf'
+    fig.set_size_inches(8, 5)
+    plt.savefig('{}.png'.format(figname),format='png', dpi=300)
+
+    #%%
+    # plot feature importances
+    impt_gbc = gbc.feature_importances_
+    imp_gbc = impt_gbc.reshape(-1,1)
+    impt_rfc = rfc.feature_importances_
+    imp_rfc = impt_rfc.reshape(-1,1)
+    names = np.array(X_train.columns)
+    names = names.reshape(-1,1)
+
+    
+    imp_df = pd.DataFrame([names,imp_gbc,imp_rfc])
+    
+    #%%
+    fig, ax1 = plt.subplots(1,1,figsize=(18,3))
+    ax1.set_title('Feature Importance from Gradient Boost (blue) and Random Forest(green)')
+    ax1.bar(x=X_train.columns, height=impt_gbc, alpha=0.8)
+    ax1.set_xticklabels(X_train.columns, rotation=40);
+    
+    ax1.bar(x=X_train.columns, height=impt_rfc, alpha=0.3, color='g')
+    
+    plt.show()
+    # save fig
+    figname = 'importances'
+    fig.set_size_inches(6, 4)
+    plt.savefig('{}.png'.format(figname),format='png', dpi=300)
