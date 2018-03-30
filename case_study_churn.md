@@ -31,6 +31,7 @@ pick by last active day
 | logistic regression |  cross-val, cv=3 |  0.671| 0.676 |
 | logistic regression |  cross-val, cv=5 |  0.670| 0.675 |
 | decision tree  | simple tree | 0.712 | 0.720 |
+| AdaBoost | defaults | 0.761 | 0.782 |
 
 ### feature importances
 features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
