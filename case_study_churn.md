@@ -23,3 +23,30 @@ __precision__ is our target score metric:
 pick by last active day
  -  June 1 (30 days ago): 62% of users have churned
  -  May 1 (60 days ago): 47% of users haves churned
+
+### evaluating models
+
+|        model | methods | accuracy | precision |
+|---------- |---------- |----------- | ----------|
+| logistic regression |  cross-val, cv=5 |  0.745| 0.734 |
+| knn | 50 neighbors | 0.786 | 0.753 |
+| decision tree  | simple tree | 0.712 | 0.720 |
+| bagging | 100 trees | 0.735 | 0.782|
+| random forest | grid searched | 0.769 | 0.789 |
+| AdaBoost | defaults | 0.761 | 0.782 |
+| gradient boost | defaults | 0.770 | 0.794 |
+| SVM | kernel=linear, C=5 | 0.74 | 0.69 |
+| SVM | kernal=rbf, C=1, gamma=0.1 | 0.607 | 0.575 |
+| SVM | kernal=poly, defaults | 0.613 | 0.594 |
+
+### feature importances
+features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
+       'luxury_car_user', 'weekday_pct']
+
+logistic: [ 0.17304385  0.07934547 -0.11524761 -0.46862851 -0.40809665 -0.00793641]
+
+|        model | methods | accuracy | precision |
+|---------- |---------- |----------- | ----------|
+| logistic regression |  cross-val, cv=3 |  0.671| 0.676 |
+| logistic regression |  cross-val, cv=5 |  0.670| 0.675 |
+| decision tree  | simple tree | 0.712 | 0.720 |
