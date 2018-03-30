@@ -1,4 +1,4 @@
-def bagging(X_train, y_train, X_test, y_test):
+def bagging(X_train, X_test, y_train, y_test):
     from sklearn.ensemble import BaggingClassifier
     from sklearn.model_selection import cross_val_score
     from sklearn.metrics import accuracy_score
