@@ -31,8 +31,12 @@ pick by last active day
 | logistic regression |  cross-val, cv=3 |  0.671| 0.676 |
 | logistic regression |  cross-val, cv=5 |  0.670| 0.675 |
 | decision tree  | simple tree | 0.712 | 0.720 |
+| bagging | 100 trees | 0.735 | 0.782|
+| random forest | grid searched | 0.769 | 0.789 |
 | AdaBoost | defaults | 0.761 | 0.782 |
-| SVM | linear kernel | 0.705 | |
+| gradient boost | defaults | 0.770 | 0.794 |
+| SVM | kernel=linear, C=5 | 0.74 | 0.69 |
+| SVM | kernal=rbf, C=1, gamma=0.1 | 0.607 | 0.575 |
 
 ### feature importances
 features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
