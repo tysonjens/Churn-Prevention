@@ -39,6 +39,8 @@ pick by last active day
 | SVM | kernal=rbf, C=1, gamma=0.1 | 0.607 | 0.575 |
 | SVM | kernal=poly, defaults | 0.613 | 0.594 |
 
+<img alt="roc curve" src="figs/roc_6models.png" width='500'>
+
 ### feature importances
 features: ['avg_dist', 'avg_surge', 'surge_pct', 'trips_in_first_30_days',
        'luxury_car_user', 'weekday_pct', 'city_Astapor', 'city_King's Landing',

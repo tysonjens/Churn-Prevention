@@ -22,7 +22,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble.partial_dependence import plot_partial_dependence
 from sklearn.ensemble.partial_dependence import partial_dependence
 
-
+#%%
 if __name__ == '__main__':
     df_train = pd.read_csv('../data/churn_train.csv')
     X_train, y_train = get_data(df_train)
@@ -90,8 +90,9 @@ if __name__ == '__main__':
     print('accuracy = {}'.format(score_accuracy))
     print('precision = {}'.format(score_precision))
 
+#%%
     # gradient boost grid search
-    #%% grid search
+    # grid search
     # '''grid search to find best params for gradient boost classifier '''
     # gbc_grid = {'learning_rate': np.linspace(0.2,0.8,4),
     #                  'max_depth': [1,2,4,8],
@@ -113,7 +114,7 @@ if __name__ == '__main__':
     # # roc curve for adaboost
     # y_test_preds = ada.predict_proba(X_test)[:,1]
     # plot_roc_curve(y_test,y_test_preds)
-
+#%%
     # plot muliple models on roc curve
     logistic_mod = pipe_logistic.named_steps['logistic']
     models = [logistic_mod, knn, dtc, bagc, rfc, ada, gbc]
@@ -128,12 +129,27 @@ if __name__ == '__main__':
     plt.title('Receiver operating characteristic')
     plt.legend(loc="lower right")
     plt.show()
-
+#%%
     # gradient boost partial dependency plots
-    features = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    features = [0, 1, 2, (0,1), (0,2), (1,2)]
     names = X_train.columns
     fig, axs = plot_partial_dependence(gbc, X_train, features,
                                        feature_names=names,
                                        n_jobs=-1, grid_resolution=50)
     fig.suptitle('Partial dependence plots')
     plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
+    
+    # save fig
+    figname = 'partial_d_012'
+    fig.set_size_inches(8, 5)
+    plt.savefig('{}.png'.format(figname),format='png', dpi=300)
+
+    #%%
+    # plot feature importances
+    impt_gbc = gbc.feature_importances_
+    fig, ax1 = plt.subplots(1,1,figsize=(18,3))
+    ax1.set_title('Feature Importance from Gradient Boost Classifier')
+    ax1.bar(x=X_train.columns, height=impt_gbc)
+    ax1.set_xticklabels(newname, rotation=40);
+    
+    plt.show()
