@@ -131,7 +131,7 @@ if __name__ == '__main__':
     plt.show()
 #%%
     # gradient boost partial dependency plots
-    features = [0, 1, 2, (0,1), (0,2), (1,2)]
+    features = [0,1,2,3,4,5]
     names = X_train.columns
     fig, axs = plot_partial_dependence(gbc, X_train, features,
                                        feature_names=names,
@@ -140,16 +140,28 @@ if __name__ == '__main__':
     plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
     
     # save fig
-    figname = 'partial_d_012'
+    figname = 'partial_d_compare_rf'
     fig.set_size_inches(8, 5)
     plt.savefig('{}.png'.format(figname),format='png', dpi=300)
 
     #%%
     # plot feature importances
     impt_gbc = gbc.feature_importances_
+    impt_rfc = rfc.feature_importances_
+    names = X_train.columns
+    
+    imp_df = pd.DataFrame([names,impt_gbc,impt_rfc])
+    
+    #%%
     fig, ax1 = plt.subplots(1,1,figsize=(18,3))
-    ax1.set_title('Feature Importance from Gradient Boost Classifier')
-    ax1.bar(x=X_train.columns, height=impt_gbc)
-    ax1.set_xticklabels(newname, rotation=40);
+    ax1.set_title('Feature Importance from Gradient Boost (blue) and Random Forest(green)')
+    ax1.bar(x=X_train.columns, height=impt_gbc, alpha=0.8)
+    ax1.set_xticklabels(X_train.columns, rotation=40);
+    
+    ax1.bar(x=X_train.columns, height=impt_rfc, alpha=0.3, color='g')
     
     plt.show()
+    # save fig
+    figname = 'importances'
+    fig.set_size_inches(6, 4)
+    plt.savefig('{}.png'.format(figname),format='png', dpi=300)
