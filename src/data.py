@@ -23,11 +23,11 @@ def get_data_dropNaN(df):
     y = df.last_trip_date < churn_date
     y = y.astype(int)
 
-    df.drop(['last_trip_date','signup_date'],axis = 1)
+    df.drop(['last_trip_date','signup_date'],axis = 1,inplace=True)
 
     return df,y
 
 
 if __name__ == '__main__':
-    df = pd.read_csv('data/churn_train.csv')
+    df = pd.read_csv('../data/churn_train.csv')
     X,y = get_data_dropNaN(df)
