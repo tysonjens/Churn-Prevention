@@ -1,7 +1,6 @@
 <img alt="intro" src="figs/Predicted Churn.png" width='500'>
 
 
-
 ### approach
  - __company priority__: retain users, if we think they'll churn, give an incentive
  - __company action__: if p(churn) > 0.8 --> spend $10 on incentive
