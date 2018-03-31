@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label=<surge_pct &le; 0.25<br/>gini = 0.469<br/>samples = 40000<br/>value = [15032, 24968]<br/>class = not churn>, fillcolor="#399de565"] ;
+1 [label=<city_King's Landing &le; 0.5<br/>gini = 0.405<br/>samples = 27544<br/>value = [7764, 19780]<br/>class = not churn>, fillcolor="#399de59b"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label=<weekday_pct &le; 99.5<br/>gini = 0.354<br/>samples = 22558<br/>value = [5180, 17378]<br/>class = not churn>, fillcolor="#399de5b3"] ;
+1 -> 2 ;
+3 [label=<gini = 0.419<br/>samples = 12923<br/>value = [3854, 9069]<br/>class = not churn>, fillcolor="#399de593"] ;
+2 -> 3 ;
+4 [label=<gini = 0.237<br/>samples = 9635<br/>value = [1326, 8309]<br/>class = not churn>, fillcolor="#399de5d6"] ;
+2 -> 4 ;
+5 [label=<luxury_car_user &le; 0.5<br/>gini = 0.499<br/>samples = 4986<br/>value = [2584, 2402]<br/>class = churn>, fillcolor="#e5813912"] ;
+1 -> 5 ;
+6 [label=<gini = 0.489<br/>samples = 3043<br/>value = [1296, 1747]<br/>class = not churn>, fillcolor="#399de542"] ;
+5 -> 6 ;
+7 [label=<gini = 0.447<br/>samples = 1943<br/>value = [1288, 655]<br/>class = churn>, fillcolor="#e581397d"] ;
+5 -> 7 ;
+8 [label=<surge_pct &le; 32.85<br/>gini = 0.486<br/>samples = 12456<br/>value = [7268, 5188]<br/>class = churn>, fillcolor="#e5813949"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label=<phone_Android &le; 0.5<br/>gini = 0.406<br/>samples = 8634<br/>value = [6187, 2447]<br/>class = churn>, fillcolor="#e581399a"] ;
+8 -> 9 ;
+10 [label=<gini = 0.352<br/>samples = 6856<br/>value = [5291, 1565]<br/>class = churn>, fillcolor="#e58139b4"] ;
+9 -> 10 ;
+11 [label=<gini = 0.5<br/>samples = 1778<br/>value = [896, 882]<br/>class = churn>, fillcolor="#e5813904"] ;
+9 -> 11 ;
+12 [label=<city_King's Landing &le; 0.5<br/>gini = 0.406<br/>samples = 3822<br/>value = [1081, 2741]<br/>class = not churn>, fillcolor="#399de59a"] ;
+8 -> 12 ;
+13 [label=<gini = 0.33<br/>samples = 3011<br/>value = [628, 2383]<br/>class = not churn>, fillcolor="#399de5bc"] ;
+12 -> 13 ;
+14 [label=<gini = 0.493<br/>samples = 811<br/>value = [453, 358]<br/>class = churn>, fillcolor="#e5813935"] ;
+12 -> 14 ;
+}
