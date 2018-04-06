@@ -1,4 +1,6 @@
 
+## Churn Prevention
+
 Online retailers have a difficult time measuring a single customer's activity level. There are "one and dones" who make a single purchase. Some customers establish an intense purchase pattern over a short period and then quickly move on. Still others purchase infrequently but steadily, and stay "loyal" for a longer period. It can be hard to keep track of which customers are active.
 
 Many prediction companies offer sophisticated churn prevention algorithms out of the box for a small fee - but savvy companies can establish simple algorithms that achieve similar results on their own.  
@@ -30,7 +32,7 @@ ___
  |           |predicted0 | predicted1(churn) |
  |---------- |---------- |----------- |
  |__actual0__   |  0 |  -10|
- |__actual1(churn)__   |  0| 20 (-10 + 100*.2)|
+ |__actual1(churn)__   |  0| 10 (-10 + 100*.2)|
 
  * Assumes 20% retention rate with incentive
  * Customers are already churning, so if our algorithm misses a customer who is churning, there is "no harm done".  This leads us to look for a precise algorith - one that, when it predicts some is churning, it is generally correct.
